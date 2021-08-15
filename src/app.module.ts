@@ -4,6 +4,7 @@ import * as Joi from '@hapi/joi';
 
 import { PostsModule } from './posts/posts.module';
 import { DatabaseModule } from './database/database.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     PostsModule,
@@ -15,9 +16,12 @@ import { DatabaseModule } from './database/database.module';
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         PORT: Joi.number().required(),
+        ACCESS_TOKEN_SECRET: Joi.string().required(),
+        ACCESS_TOKEN_EXPIRATION_TIME: Joi.number().required(),
       }),
     }),
     DatabaseModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

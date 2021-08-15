@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-console.log(__dirname + '/../**/*.entity.ts');
-
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
