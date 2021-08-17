@@ -7,7 +7,6 @@ import { UsersService } from 'src/users/users.service';
 import PostgresErrorCode from 'src/database/postgresErrorCode.enum';
 import RegisterDto from './dto/register.dto';
 import TokenPayload from './types/tokenPayload.interface';
-
 @Injectable()
 export class AuthService {
   constructor(
