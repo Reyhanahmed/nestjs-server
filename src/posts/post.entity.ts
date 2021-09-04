@@ -1,7 +1,12 @@
+import Category from 'src/categories/category.entity';
+import User from 'src/users/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,13 +28,20 @@ class Post {
   @CreateDateColumn({
     type: 'timestamp',
   })
-  createdAt: Date;
+  public createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
     nullable: true,
   })
-  updatedAt: Date;
+  public updatedAt: Date;
+
+  @ManyToOne(() => User, (user: User) => user.posts)
+  public author: User;
+
+  @ManyToMany(() => Category, (category: Category) => category.posts)
+  @JoinTable()
+  public categories: Category[];
 }
 
 export default Post;

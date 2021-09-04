@@ -5,9 +5,9 @@ import * as Joi from '@hapi/joi';
 import { PostsModule } from './posts/posts.module';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoriesModule } from './categories/categories.module';
 @Module({
   imports: [
-    PostsModule,
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         POSTGRES_HOST: Joi.string().required(),
@@ -20,8 +20,10 @@ import { AuthModule } from './auth/auth.module';
         ACCESS_TOKEN_EXPIRATION_TIME: Joi.number().required(),
       }),
     }),
+    PostsModule,
     DatabaseModule,
     AuthModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [],
