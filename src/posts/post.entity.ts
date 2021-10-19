@@ -26,22 +26,22 @@ class Post {
   public category?: string;
 
   @CreateDateColumn({
-    type: 'timestamp',
+    type: 'timestamptz',
   })
   public createdAt: Date;
 
   @UpdateDateColumn({
-    type: 'timestamp',
+    type: 'timestamptz',
     nullable: true,
   })
   public updatedAt: Date;
 
   @ManyToOne(() => User, (user: User) => user.posts)
-  public author: User;
+  public author?: User;
 
   @ManyToMany(() => Category, (category: Category) => category.posts)
   @JoinTable()
-  public categories: Category[];
+  public categories?: Category[];
 }
 
 export default Post;

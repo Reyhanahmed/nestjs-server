@@ -20,7 +20,7 @@ class User {
   public email: string;
 
   @Column()
-  name: string;
+  public name: string;
 
   @Column()
   @Exclude()
@@ -34,7 +34,7 @@ class User {
   public address: Address;
 
   @OneToMany(() => Post, (post: Post) => post.author)
-  public posts: Post[];
+  public posts?: Post[];
 }
 
 export default User;
