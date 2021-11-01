@@ -6,6 +6,9 @@ import { PostsModule } from './posts/posts.module';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
+import { FilesModule } from './files/files.module';
+import { UsersModule } from './users/users.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -15,15 +18,21 @@ import { CategoriesModule } from './categories/categories.module';
         POSTGRES_USER: Joi.string().required(),
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
-        PORT: Joi.number().required(),
+        PORT: Joi.number(),
         ACCESS_TOKEN_SECRET: Joi.string().required(),
         ACCESS_TOKEN_EXPIRATION_TIME: Joi.number().required(),
+        AWS_ACCESS_KEY_ID: Joi.string().required(),
+        AWS_SECRET_ACCESS_KEY: Joi.string().required(),
+        AWS_REGION: Joi.string().required(),
+        AWS_PUBLIC_BUCKET_NAME: Joi.string().required(),
       }),
     }),
     PostsModule,
     DatabaseModule,
     AuthModule,
     CategoriesModule,
+    FilesModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],

@@ -20,13 +20,12 @@ import AuthController from './auth.controller';
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get('ACCESS_TOKEN_SECRET'),
         signOptions: {
-          expiresIn: `${configService.get('ACCESS_TOKEN_EXPIRATION_TIME')}`,
+          expiresIn: configService.get('ACCESS_TOKEN_EXPIRATION_TIME') / 1000,
         },
       }),
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],
-  exports: [JwtModule],
 })
 export class AuthModule {}
